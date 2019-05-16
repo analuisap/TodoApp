@@ -6,12 +6,14 @@ import DebugConfig from '../Config/DebugConfig'
 /* ------------- Types ------------- */
 
 import { StartupTypes } from '../Redux/StartupRedux'
-import { GithubTypes } from '../Redux/GithubRedux'
+import { TodoTypes } from '../Redux/TodoRedux'
+import {UserTypes} from '../Redux/UserRedux'
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
-import { getUserAvatar } from './GithubSagas'
+import { getTodo } from './TodoSagas'
+import { getUser } from './UserSagas'
 
 /* ------------- API ------------- */
 
@@ -26,7 +28,8 @@ export default function * root () {
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
 
-    // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)
+    takeLatest(TodoTypes.TODO_REQUEST, getTodo, api),
+
+    takeLatest(UserTypes.USER_REQUEST, getUser, api)
   ])
 }

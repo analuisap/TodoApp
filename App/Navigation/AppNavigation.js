@@ -1,10 +1,12 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation'
+import TodoDetailsScreen from '../Containers/TodoDetailsScreen'
 import LaunchScreen from '../Containers/LaunchScreen'
 
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
+  TodoDetailsScreen: { screen: TodoDetailsScreen },
   LaunchScreen: { screen: LaunchScreen }
 }, {
   // Default config for all screens
